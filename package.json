@@ -1,0 +1,11 @@
+{
+  "name": "svelte-inspect",
+  "version": "0.0.1-alpha.0",
+  "description": "Svelte object inspector",
+  "main": "index.js",
+  "svelte": "Inspect.svelte",
+  "keywords": [
+    "svelte"
+  ],
+  "license": "MIT",
+}
