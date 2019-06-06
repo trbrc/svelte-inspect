@@ -3,18 +3,19 @@
 
   export let key;
   export let descriptor = {};
-  export let separator = ': ';
+  export let separator;
 
   $: enumerable = descriptor.enumerable;
   $: value = descriptor.value;
 
-  import Value from './Value.svelte';
+  import Formatter from './Formatter.svelte';
 </script>
 
-<span class=key class:enumerable class:index={keyIsIndex(key)}>
-  {String(key)}<span class=separator>{separator}</span>
-</span>
-<Value {value} />
+<Formatter {value}>
+  <span class=key class:enumerable class:index={keyIsIndex(key)}>
+    {String(key)}<span class=separator>{separator}</span>
+  </span>
+</Formatter>
 
 <style>
   .key {

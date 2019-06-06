@@ -2,19 +2,26 @@
   import Property from './inspect/Property.svelte';
 
   $: propKeys = Object.keys($$props);
+  $: displayType = propKeys.length > 1 ? 'block' : 'inline';
 </script>
 
 {#each propKeys as key}
-  <span class=inspect>
+  <span class=inspect style="display: {displayType}">
     <Property
       key={key}
       descriptor={Object.getOwnPropertyDescriptor($$props, key)}
       separator=" = "
-    />;
+    />
   </span>
 {/each}
 
 <style>
+  .inspect:after {
+    content: ' ; ';
+    margin-left: -1ex;
+    pointer-events: none;
+    color: var(--color-black);
+  }
   .inspect {
     font-family:
       Menlo,

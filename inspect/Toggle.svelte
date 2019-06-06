@@ -1,10 +1,31 @@
+<script context=module>
+  let typingBuffer = '';
+  let hasSearchBufferTimeout = false;
+  let clearBufferTimeout;
+  function type(char) {
+    typingBuffer += char;
+    if (!hasSearchBufferTimeout) {
+      hasSearchBufferTimeout = true;
+      setTimeout(() => {
+        hasSearchBufferTimeout = false;
+        focusBySearch(typingBuffer);
+      }, 100);
+    }
+    clearTimeout(clearBufferTimeout);
+    clearBufferTimeout = setTimeout(() => {
+      typingBuffer = '';
+    }, 600);
+  }
+</script>
+
 <script>
-  import {target, focusPrev, focusNext, exitFocusScope, enterFocusScope} from './focus-actions.js';
+  import {onTick} from './utilities.js';
+  import {target, focusPrev, focusNext, exitFocusScope, enterFocusScope, focusBySearch} from './focus-actions.js';
 
+  export let className = '';
   export let value;
-
-  let isOpen = false;
-  let toggle = (bool = !isOpen) => {isOpen = bool};
+  export let isOpen = false;
+  const toggle = (bool = !isOpen) => {isOpen = bool};
 
   const onKeyDown = keydownEvent => {
     let shouldPreventDefault = true;
@@ -33,7 +54,18 @@
         }
         break;
       }
-      case 'Enter':
+      case 'Enter': {
+        if (!isOpen) {
+          toggle(true);
+          onTick(enterFocusScope);
+        } else {
+          const didFocus = enterFocusScope();
+          if (!didFocus) {
+            toggle(false);
+          }
+        }
+        break;
+      }
       case 'ArrowRight': {
         if (!isOpen) {
           toggle(true);
@@ -43,6 +75,9 @@
         break;
       }
       default: {
+        if (keydownEvent.key.length === 1) {
+          type(keydownEvent.key);
+        }
         shouldPreventDefault = false;
       }
     }
@@ -51,43 +86,36 @@
     }
   };
 
+  let button;
+
   import PropertyList from './PropertyList.svelte';
 </script>
 
 <button
+  bind:this={button}
   use:target
   on:click={event => {
-    toggle();
-    console.log(event.target);
-    event.target.focus();
-    console.log(document.activeElement);
+    if (event.detail === 1) {
+      toggle();
+      onTick(() => button.focus());
+    } else if (isOpen && event.detail === 2) {
+      enterFocusScope();
+    }
   }}
   on:keydown={onKeyDown}
-  class=prefix
+  class:toggle={true}
+  class={className}
 >
-  <slot name=prefix/>
+  <slot />
 </button>
-{#if isOpen}
-  <PropertyList
-    {value}
-  >
-    <div class=empty>&nbsp;&nbsp;No properties</div>
-  </PropertyList>
-{/if}<slot name=suffix />
 
 <style>
-  .prefix {
+  .toggle {
     all: initial;
     font: inherit;
     cursor: pointer;
   }
-  .prefix:focus {
-    outline-color: -webkit-focus-ring-color;
-    outline-style: auto;
-    outline-width: 5px;
-  }
-  .empty {
-    color: var(--color-gray);
-    font-style: italic;
+  .toggle:focus {
+    outline: -webkit-focus-ring-color 5px auto;
   }
 </style>
