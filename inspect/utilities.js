@@ -1,10 +1,3 @@
-export const directInstanceOf = type => {
-  const prototype = type.prototype;
-  return value => value && Object.getPrototypeOf(value) === prototype;
-};
-
-export const isArray = directInstanceOf(Array)
-
 export const isNil = (value = null) => value === null;
 
 export const keyIsIndex = key => String(parseInt(String(key))) === String(key);

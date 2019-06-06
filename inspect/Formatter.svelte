@@ -1,6 +1,4 @@
 <script>
-  import {isArray} from './utilities.js';
-
   export let value;
 
   import * as NilFormatter from './formatters/NilFormatter.svelte';
