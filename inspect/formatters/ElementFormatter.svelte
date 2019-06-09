@@ -1,5 +1,13 @@
 <script context=module>
-  export const check = value => value instanceof HTMLElement;
+  export const check = value => {
+    if (!(value instanceof HTMLElement)) {
+      return false;
+    }
+    try {
+      return !!value.tagName;
+    } catch (error) {}
+    return false;
+  };
 </script>
 
 <script>
@@ -7,54 +15,47 @@
 
   export let value;
 
-  let tagName;
-  let hasTagName = false;
-  try {
-    tagName = value.tagName;
-    hasTagName = true;
-  } catch (error) {}
-
-  const attributes = [];
-  if (hasTagName) for (let i = 0; i < value.attributes.length; i++) {
-    const attribute = value.attributes[i];
-    attributes.push(` ${attribute.name}="${attribute.value}"`);
-  }
-
-  const typeDescription = tagName ? `<${tagName.toLowerCase()}${attributes.join('')}>` : getObjectTypeString(value);
-
-  let isOpen = false;
-
-  import Toggle from '../Toggle.svelte';
-  import PropertyList from '../PropertyList.svelte';
+  import Echo from '../Echo.svelte';
+  import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
 
-<Toggle {value} className=object-toggle bind:isOpen>
+<PrimitiveBase {value}>
   <slot />
-  <span class=object class:element={hasTagName}>{typeDescription}</span>
-  &lcub;{#if !isOpen}
-    <span class=on-intent>…</span>&rcub;
-  {/if}
-</Toggle>
-
-{#if isOpen}
-  <PropertyList
-    {value}
-  />
-  &rcub;
-{/if}
+  <Echo>
+    <span slot=slot class=punctuation>&lt;</span>
+    <span slot=slot class=tag-name>{value.tagName.toLowerCase()}</span>
+    <span slot=slot>
+      {#each value.attributes as attribute}
+        {' '}
+        {#if attribute.value}
+          <Echo>
+            <span slot=slot class=attribute-name>{attribute.name}</span>
+            <span slot=slot class=punctuation>="</span>
+            <span slot=slot class=attribute-value>{attribute.value}</span>
+            <span slot=slot class=punctuation>"</span>
+          </Echo>
+        {:else}
+          <Echo>
+            <span slot=slot class=attribute-name>{attribute.name}</span>
+          </Echo>
+        {/if}
+      {/each}
+    </span>
+    <span slot=slot class=punctuation>&gt;</span>
+  </Echo>
+</PrimitiveBase>
 
 <style>
-  .object {
-    color: var(--color-purple);
-  }
-  .element {
+  .tag-name {
     color: var(--color-green);
   }
-  .on-intent {
-    display: none;
+  .punctuation {
+    color: var(--color-gray);
   }
-  :global(.object-toggle:hover) > .on-intent,
-  :global(.object-toggle:focus) > .on-intent {
-    display: inline;
+  .attribute-name {
+    color: var(--color-brown);
+  }
+  .attribute-value {
+    color: var(--color-red);
   }
 </style>
