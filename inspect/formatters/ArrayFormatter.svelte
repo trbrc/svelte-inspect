@@ -12,7 +12,7 @@
   import Echo from '../Echo.svelte';
 </script>
 
-<Toggle {value} className=array-toggle bind:isOpen>
+<Toggle className=array-toggle bind:isOpen>
   <slot />
   <Echo>
     <span slot=slot class=array>Array(</span>

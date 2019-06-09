@@ -15,7 +15,7 @@
   import PropertyList from '../PropertyList.svelte';
 </script>
 
-<Toggle {value} className=object-toggle bind:isOpen>
+<Toggle className=object-toggle bind:isOpen>
   <slot />
   <span class=object>{typeDescription}</span>
   &lcub;{#if !isOpen}

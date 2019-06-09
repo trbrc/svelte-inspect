@@ -33,7 +33,7 @@
   import Echo from '../Echo.svelte';
 </script>
 
-<Toggle {value} className=typed-array-toggle bind:isOpen>
+<Toggle className=typed-array-toggle bind:isOpen>
   <slot />
   <Echo>
     <span slot=slot class=typed-array>{typeDescription}(</span>
