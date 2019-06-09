@@ -33,12 +33,12 @@
   import Echo from '../Echo.svelte';
 </script>
 
-<Toggle {value} className=array-toggle bind:isOpen>
+<Toggle {value} className=typed-array-toggle bind:isOpen>
   <slot />
   <Echo>
-    <span slot=slot class=array>{typeDescription}(</span>
+    <span slot=slot class=typed-array>{typeDescription}(</span>
     <span slot=slot class=length>{value.length}</span>
-    <span slot=slot class=array>)</span>
+    <span slot=slot class=typed-array>)</span>
   </Echo>
   [{#if !isOpen}
     <span class=on-intent>…</span>]
@@ -55,7 +55,7 @@
 {/if}
 
 <style>
-  .array {
+  .typed-array {
     color: var(--color-black);
   }
   .length {
