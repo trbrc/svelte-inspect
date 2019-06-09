@@ -5,8 +5,6 @@
 <script>
   export let value;
 
-  let isOpen = false;
-
   let key = Symbol.keyFor(value);
   const isWellKnown = key !== undefined;
   if (!isWellKnown) {
@@ -14,31 +12,18 @@
   }
   const prefix = isWellKnown ? 'Symbol.for(' : 'Symbol(';
 
-  import Toggle from '../Toggle.svelte';
-  import PropertyList from '../PropertyList.svelte';
   import Echo from '../Echo.svelte';
+  import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
 
-<Toggle {value} className=symbol-toggle bind:isOpen>
+<PrimitiveBase {value}>
   <slot />
   <Echo>
     <span slot=slot class=affix>{prefix}</span>
     <span slot=slot class=key>{key}</span>
     <span slot=slot class=affix>)</span>
   </Echo>
-  {#if !isOpen}
-    <span class=on-intent>…</span>
-  {:else}
-    &lcub;
-  {/if}
-</Toggle>
-
-{#if isOpen}
-  <PropertyList
-    {value}
-  />
-  &rcub;
-{/if}
+</PrimitiveBase>
 
 <style>
   .key {
@@ -46,12 +31,5 @@
   }
   .affix {
     color: var(--color-pink);
-  }
-  .on-intent {
-    display: none;
-  }
-  :global(.symbol-toggle:hover) > .on-intent,
-  :global(.symbol-toggle:focus) > .on-intent {
-    display: inline;
   }
 </style>

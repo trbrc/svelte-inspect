@@ -9,13 +9,10 @@
 
   const groups = stringEscapeGroups(value);
 
-  let isOpen = false;
-
-  import Toggle from '../Toggle.svelte';
-  import PropertyList from '../PropertyList.svelte';
+  import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
 
-<Toggle {value} className=string-toggle bind:isOpen>
+<PrimitiveBase {value}>
   <slot />
   <span class=string>
     {#each groups as group}
@@ -25,19 +22,7 @@
       >{group}</span>
     {/each}
   </span>
-  {#if !isOpen}
-    <span class=on-intent>…</span>
-  {:else}
-    &lcub;
-  {/if}
-</Toggle>
-
-{#if isOpen}
-  <PropertyList
-    {value}
-  />
-  &rcub;
-{/if}
+</PrimitiveBase>
 
 <style>
   .string:after,
@@ -50,12 +35,5 @@
   }
   .chars.escape {
     color: var(--color-pink);
-  }
-  .on-intent {
-    display: none;
-  }
-  :global(.string-toggle:hover) > .on-intent,
-  :global(.string-toggle:focus) > .on-intent {
-    display: inline;
   }
 </style>

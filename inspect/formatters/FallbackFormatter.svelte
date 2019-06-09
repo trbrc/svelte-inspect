@@ -5,38 +5,16 @@
 <script>
   export let value;
 
-  let isOpen = false;
-
-  import Toggle from '../Toggle.svelte';
-  import PropertyList from '../PropertyList.svelte';
+  import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
 
-<Toggle {value} className=fallback-toggle bind:isOpen>
+<PrimitiveBase {value}>
   <slot />
   <span class=fallback>{String(value)}</span>
-  {#if !isOpen}
-    <span class=on-intent>…</span>
-  {:else}
-    &lcub;
-  {/if}
-</Toggle>
-
-{#if isOpen}
-  <PropertyList
-    {value}
-  />
-  &rcub;
-{/if}
+</PrimitiveBase>
 
 <style>
   .fallback {
     color: var(--color-black);
-  }
-  .on-intent {
-    display: none;
-  }
-  :global(.fallback-toggle:hover) > .on-intent,
-  :global(.fallback-toggle:focus) > .on-intent {
-    display: inline;
   }
 </style>

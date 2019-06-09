@@ -5,38 +5,16 @@
 <script>
   export let value;
 
-  let isOpen = false;
-
-  import Toggle from '../Toggle.svelte';
-  import PropertyList from '../PropertyList.svelte';
+  import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
 
-<Toggle {value} className=nil-toggle bind:isOpen>
+<PrimitiveBase {value}>
   <slot />
   <span class=nil>{String(value)}</span>
-  {#if !isOpen}
-    <span class=on-intent>…</span>
-  {:else}
-    &lcub;
-  {/if}
-</Toggle>
-
-{#if isOpen}
-  <PropertyList
-    {value}
-  />
-  &rcub;
-{/if}
+</PrimitiveBase>
 
 <style>
   .nil {
     color: var(--color-gray);
-  }
-  .on-intent {
-    display: none;
-  }
-  :global(.nil-toggle:hover) > .on-intent,
-  :global(.nil-toggle:focus) > .on-intent {
-    display: inline;
   }
 </style>
