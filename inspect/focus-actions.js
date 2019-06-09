@@ -104,7 +104,7 @@ export function enterFocusScope() {
 export function focusBySearch(string) {
   // Find a focus target that matches the string.
   try {
-    const regex = new RegExp(string.split('').join('.*'), 'i');
+    const regex = new RegExp(string.split('').join('[^a-z0-9]*.?[^a-z0-9]*'), 'i');
     let scope = (document.activeElement);
     do {
       scope = getParentScope(scope.parentElement);
