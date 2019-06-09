@@ -33,3 +33,38 @@ export const stringEscapeGroups = string => {
 const backslashCharCode = '\\'.charCodeAt(0);
 
 export const isEscapeGroup = string => string.charCodeAt(0) === backslashCharCode;
+
+export const groupByRegexes = (regexes) => {
+  const keys = Object.keys(regexes);
+  return string => {
+    const groups = [];
+    let source = string;
+    while (source.length) {
+      let bestKey = null;
+      let bestMatch = null;
+      let bestIndex = source.length;
+      for (const key of keys) {
+        const regex = regexes[key];
+        const match = source.match(regex);
+        if (match && match.index < bestIndex) {
+          bestKey = key;
+          bestMatch = match[0];
+          bestIndex = match.index;
+        }
+      }
+      if (bestIndex > 0) {
+        groups.push({key: undefined, match: source.slice(0, bestIndex)})
+      }
+      if (bestMatch) {
+        groups.push({key: bestKey, match: bestMatch})
+        source = source.slice(bestIndex + bestMatch.length);
+      } else {
+        break;
+      }
+    }
+    return groups;
+  };
+};
+
+
+

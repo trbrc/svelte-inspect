@@ -3,48 +3,40 @@
 </script>
 
 <script>
+  import {groupByRegexes} from '../utilities.js';
+  const grouper = groupByRegexes({
+    'function-keyword': /(ƒ|function|\=\>)/,
+    'class-keyword': /(class|extends)/,
+    identifier: /(\d|\w|_|\$)+/,
+  });
+
   export let value;
 
-  const isClass = Function.prototype.toString.call(value).startsWith('class');
-  const functionString = Function.prototype.toString.call(value);
+  const functionString = Function.prototype.toString.call(value).split('\n')[0].replace(/^function/, 'ƒ');
 
-  let isOpen = false;
-
-  import Toggle from '../Toggle.svelte';
-  import PropertyList from '../PropertyList.svelte';
+  import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
 
-<Toggle {value} className=function-toggle bind:isOpen>
+<PrimitiveBase {value}>
   <slot />
-  <span class=function class:class={isClass}>
-    {Function.prototype.toString.call(value).split('\n')[0]}
+  <span>
+    {#each grouper(functionString) as {key, match}}
+      <span class={key || 'default'}>{match}</span>
+    {/each}
   </span>
-  {#if !isOpen}
-    <span class=on-intent>…</span>
-  {:else}
-    &lcub;
-  {/if}
-</Toggle>
-
-{#if isOpen}
-  <PropertyList
-    {value}
-  />
-  &rcub;
-{/if}
+</PrimitiveBase>
 
 <style>
-  .function {
+  .default {
+    color: var(--color-gray);
+  }
+  .function-keyword {
     color: var(--color-black);
   }
-  .class {
+  .class-keyword {
     color: var(--color-purple);
   }
-  .on-intent {
-    display: none;
-  }
-  :global(.function-toggle:hover) > .on-intent,
-  :global(.function-toggle:focus) > .on-intent {
-    display: inline;
+  .identifier {
+    color: var(--color-blue);
   }
 </style>
