@@ -20,6 +20,7 @@
       <span class=item>
         <Property
           key={property}
+          context={value}
           descriptor={getPropertyDescriptor(value, property)}
           separator=': '
         />

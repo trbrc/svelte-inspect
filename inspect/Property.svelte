@@ -2,20 +2,26 @@
   import {keyIsIndex} from './utilities.js';
 
   export let key;
+  export let context;
   export let descriptor = {};
   export let separator;
 
   $: enumerable = descriptor.enumerable;
+  $: getter = descriptor.get;
   $: value = descriptor.value;
 
   import Formatter from './Formatter.svelte';
+  import Getter from './Getter.svelte';
 </script>
 
-<Formatter {value}>
+<svelte:component
+  this={getter ? Getter : Formatter}
+  {...(getter ? {descriptor, context} : {value})}
+>
   <span class=key class:enumerable class:index={keyIsIndex(key)}>
     {String(key)}<span class=separator>{separator}</span>
   </span>
-</Formatter>
+</svelte:component>
 
 <style>
   .key {

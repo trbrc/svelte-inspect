@@ -9,6 +9,7 @@
   <span class=inspect style="display: {displayType}">
     <Property
       key={key}
+      context={null}
       descriptor={Object.getOwnPropertyDescriptor($$props, key)}
       separator=" = "
     />
