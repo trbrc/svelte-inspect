@@ -19,12 +19,19 @@
 </script>
 
 <script>
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
   import {onTick} from './utilities.js';
   import {target, focusPrev, focusNext, exitFocusScope, enterFocusScope, focusBySearch} from './focus-actions.js';
 
   export let className = '';
   export let isOpen = false;
-  const toggle = (bool = !isOpen) => {isOpen = bool};
+  const toggle = (bool = !isOpen) => {
+    isOpen = bool;
+    dispatch('open', bool);
+  };
 
   const onKeyDown = keydownEvent => {
     let shouldPreventDefault = true;
