@@ -1,5 +1,5 @@
 <script>
-  import {onTick, isNil, getAllProperties} from './utilities.js';
+  import {onTick, isNil, getAllProperties, getPropertyDescriptor} from './utilities.js';
 
   export let value;
 
@@ -20,7 +20,7 @@
       <span class=item>
         <Property
           key={property}
-          descriptor={Object.getOwnPropertyDescriptor(value, property) || {value: value[property]}}
+          descriptor={getPropertyDescriptor(value, property)}
           separator=': '
         />
       </span>

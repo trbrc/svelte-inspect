@@ -22,6 +22,22 @@ export const getAllProperties = object => {
     ...Object.getOwnPropertySymbols(object),
     ...(object['__proto__'] ? ['__proto__'] : [])
   ];
+export const getPropertyDescriptor = (object, prop) => {
+  if (!object) {
+    return {};
+  } else if (prop === '__proto__') {
+    return {
+      value: Object.getPrototypeOf(object)
+    };
+  } else {
+    const ownPropertyDescriptor = Object.getOwnPropertyDescriptor(object, prop);
+    if (ownPropertyDescriptor) {
+      return ownPropertyDescriptor;
+    } else {
+      const prototype = Object.getPrototypeOf(object);
+      return getPropertyDescriptor(prototype, prop);
+    }
+  }
 };
 
 export const stringEscapeGroups = string => {
