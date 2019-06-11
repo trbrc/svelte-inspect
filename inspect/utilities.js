@@ -17,11 +17,18 @@ export const getObjectTypeString = object => {
 };
 
 export const getAllProperties = object => {
-  return [
+  const enumerableKeys = [];
+  for (const enumerableKey in object) {
+    enumerableKeys.push(enumerableKey);
+  }
+  return [...new Set([
+    ...enumerableKeys,
     ...Object.getOwnPropertyNames(object),
     ...Object.getOwnPropertySymbols(object),
     ...(object['__proto__'] ? ['__proto__'] : [])
-  ];
+  ])];
+};
+
 export const getPropertyDescriptor = (object, prop) => {
   if (!object) {
     return {};
