@@ -10,8 +10,8 @@
       case Uint32Array.prototype:
       case Float32Array.prototype:
       case Float64Array.prototype:
-      case BigInt64Array.prototype:
-      case BigUint64Array.prototype: {
+      case typeof BigInt64Array !== 'undefined' && BigInt64Array.prototype:
+      case typeof BigUint64Array !== 'undefined' && BigUint64Array.prototype: {
         return true;
       }
     }
