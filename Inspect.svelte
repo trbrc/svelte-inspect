@@ -40,7 +40,7 @@
     --color-purple: purple;
     --color-orange: darkorange;
     --color-yellow: gold;
-    --color-brown: chocolate;
+    --color-brown: darkgoldenrod;
     --color-pink: hotpink;
     --color-gray: gray;
     --color-black: #222222;
