@@ -5,7 +5,7 @@
 <script>
   export let value;
 
-  const stringified = Object.is(value, -0) ? '-0' : Number.prototype.toString.call(value, 10);
+  $: stringified = Object.is(value, -0) ? '-0' : Number.prototype.toString.call(value, 10);
 
   import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>

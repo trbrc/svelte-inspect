@@ -7,7 +7,7 @@
 
   export let value;
 
-  const groups = stringEscapeGroups(value);
+  $: groups = stringEscapeGroups(value);
 
   import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>

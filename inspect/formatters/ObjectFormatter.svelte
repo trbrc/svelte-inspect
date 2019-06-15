@@ -7,7 +7,7 @@
 
   export let value;
 
-  const typeDescription = getObjectTypeString(value);
+  $: typeDescription = getObjectTypeString(value);
 
   let isOpen = false;
 

@@ -5,12 +5,12 @@
 <script>
   export let value;
 
-  let key = Symbol.keyFor(value);
-  const isWellKnown = key !== undefined;
+  $: key = Symbol.keyFor(value);
+  $: isWellKnown = key !== undefined;
   if (!isWellKnown) {
     key = String(value).slice(7, -1);
   }
-  const prefix = isWellKnown ? 'Symbol.for(' : 'Symbol(';
+  $: prefix = isWellKnown ? 'Symbol.for(' : 'Symbol(';
 
   import Echo from '../Echo.svelte';
   import PrimitiveBase from '../PrimitiveBase.svelte';

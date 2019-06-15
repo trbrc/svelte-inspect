@@ -5,8 +5,8 @@
 <script>
   export let value;
 
-  const source = value.source;
-  const flags = value.flags;
+  $: source = value.source;
+  $: flags = value.flags;
 
   import Echo from '../Echo.svelte';
   import PrimitiveBase from '../PrimitiveBase.svelte';

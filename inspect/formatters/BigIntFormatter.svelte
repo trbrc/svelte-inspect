@@ -5,7 +5,7 @@
 <script>
   export let value;
 
-  const stringified = BigInt.prototype.toString.call(value) + 'n';
+  $: stringified = BigInt.prototype.toString.call(value) + 'n';
 
   import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>

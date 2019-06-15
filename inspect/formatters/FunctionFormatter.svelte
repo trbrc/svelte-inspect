@@ -12,7 +12,7 @@
 
   export let value;
 
-  const functionString = Function.prototype.toString.call(value).split('\n')[0].replace(/^function/, 'ƒ');
+  $: functionString = Function.prototype.toString.call(value).split('\n')[0].replace(/^function/, 'ƒ');
 
   import PrimitiveBase from '../PrimitiveBase.svelte';
 </script>
