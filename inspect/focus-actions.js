@@ -56,7 +56,7 @@ function getParentScope(element) {
 }
 
 function setFocus(targetElement) {
-  if (targetElement && targetElement !== document.activeElement) {
+  if (targetElement) {
     const serial = targetElement.dataset.focusTarget;
     if (serial) {
       const scope = getParentScope(targetElement);
