@@ -92,18 +92,14 @@
     }
   };
 
-  let button;
-
   import PropertyList from './PropertyList.svelte';
 </script>
 
 <button
-  bind:this={button}
   use:target
   on:click={event => {
     if (event.detail === 1) {
       toggle();
-      onTick(() => button && button.focus());
     } else if (isOpen && event.detail === 2) {
       enterFocusScope();
     }
