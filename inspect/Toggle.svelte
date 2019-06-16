@@ -95,7 +95,8 @@
   import PropertyList from './PropertyList.svelte';
 </script>
 
-<button
+<span
+  role=button
   use:target
   on:click={event => {
     if (event.detail === 1) {
@@ -109,12 +110,10 @@
   class={className}
 >
   <slot />
-</button>
+</span>
 
 <style>
   .toggle {
-    all: initial;
-    font: inherit;
     cursor: pointer;
   }
   .toggle:focus {
