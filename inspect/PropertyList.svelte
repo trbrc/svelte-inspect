@@ -33,18 +33,20 @@
     </div>
   {/each}
   {#if maxCount < properties.length}
-    <div class=row>
-      <pre class=indentation>&nbsp;&nbsp;</pre>
-      <Toggle
-        on:open={() => {
-          maxCount += paging;
-          focusPrev();
-          onTick(focusNext);
-        }}
-      >
-        Show {maxCount} … {Math.min(properties.length, maxCount + paging - 1)} of {properties.length} properties
-      </Toggle>
-    </div>
+    {#each {length: 1} as _ (maxCount)}
+      <div class=row>
+        <pre class=indentation>&nbsp;&nbsp;</pre>
+        <Toggle
+          on:open={() => {
+            maxCount += paging;
+            focusPrev();
+            onTick(focusNext);
+          }}
+        >
+          Show {maxCount} … {Math.min(properties.length, maxCount + paging - 1)} of {properties.length} properties
+        </Toggle>
+      </div>
+    {/each}
   {/if}
 </span>
 
