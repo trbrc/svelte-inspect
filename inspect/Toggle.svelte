@@ -118,6 +118,10 @@
     cursor: pointer;
   }
   .toggle:focus {
-    outline: -webkit-focus-ring-color 5px auto;
+    outline-color: var(--color-selection);
+    box-shadow:
+      inset 0 0 0 1em var(--color-selection),
+      0 0 0 2px var(--color-selection);
+    border-radius: 1px;
   }
 </style>

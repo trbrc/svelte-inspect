@@ -46,5 +46,7 @@
     --color-gray: gray;
     --color-black: #222222;
     --color-white: whitesmoke;
+
+    --color-selection: lightskyblue;
   }
 </style>
