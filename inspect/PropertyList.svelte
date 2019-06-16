@@ -3,7 +3,7 @@
 
   export let value;
 
-  const properties = isNil(value) ? [] : getAllProperties(value);
+  $: properties = isNil(value) ? [] : getAllProperties(value);
 
   const paging = 100;
   let maxCount = paging;
@@ -14,7 +14,7 @@
 </script>
 
 <span use:scope>
-  {#each properties.slice(0, maxCount) as property, index (index)}
+  {#each properties.slice(0, maxCount) as property (property)}
     <div class=row>
       <pre class=indentation>&nbsp;&nbsp;</pre>
       <span class=item>
