@@ -4,6 +4,15 @@ export function target(element) {
   // This should probably not be a global serial, but based instead on the scope.
   element.dataset.focusTarget = serialCounter++;
   element.tabIndex = 0;
+  const focusEventListener = () => {
+    setFocus(element);
+  };
+  element.addEventListener('focus', focusEventListener);
+  return {
+    destroy() {
+      element.removeEventListener('focus', focusEventListener);
+    }
+  };
 }
 
 export function scope(element) {
