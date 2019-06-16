@@ -63,7 +63,8 @@
       case 'Enter': {
         if (!isOpen) {
           toggle(true);
-          onTick(enterFocusScope);
+          focusPrev();
+          onTick(focusNext).then(enterFocusScope);
         } else {
           const didFocus = enterFocusScope();
           if (!didFocus) {

@@ -102,6 +102,11 @@ export function enterFocusScope() {
     document.activeElement,
     document.querySelectorAll('[data-focus-scope]')
   );
+  const targetBefore = getTargetBefore(nextScope);
+  if (targetBefore !== document.activeElement) {
+    // We only want to enter the scope if it is directly after activeElement
+    return false;
+  }
   const serial = nextScope.dataset.focusScope;
   const selector = serial
     ? `[data-focus-target="${serial}"]`
