@@ -10,12 +10,16 @@
   const getConfig = configuration();
   let {depth, palette} = getConfig();
 
+  $: colors = Object.keys(palette);
+  $: style = colors.map(color => `--color-${color}: ${palette[color]};`).join('');
+
   $: propKeys = Object.keys($$props);
-  $: displayType = propKeys.length > 1 ? 'block' : 'inline';
+  $: block = propKeys.length > 1;
+  $: inline = !block;
 </script>
 
 {#each propKeys as key}
-  <span class=inspect style="display: {displayType}">
+  <span class=inspect class:block class:inline {style}>
     <Property
       depth={depth}
       key={key}
@@ -27,12 +31,6 @@
 {/each}
 
 <style>
-  .inspect:after {
-    content: ' ; ';
-    margin-left: -1ex;
-    pointer-events: none;
-    color: var(--color-black);
-  }
   .inspect {
     font-family:
       Menlo,
@@ -58,5 +56,17 @@
     --color-white: whitesmoke;
 
     --color-selection: lightskyblue;
+  }
+  .inspect:after {
+    content: ' ; ';
+    margin-left: -1ex;
+    pointer-events: none;
+    color: var(--color-black);
+  }
+  .block {
+    display: block;
+  }
+  .inline {
+    display: inline;
   }
 </style>
