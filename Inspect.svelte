@@ -1,3 +1,8 @@
+<script context=module>
+  import {configure as config} from './inspect/config.js';
+  export {config};
+</script>
+
 <script>
   import Property from './inspect/Property.svelte';
 
