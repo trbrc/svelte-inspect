@@ -5,11 +5,8 @@
 <script>
   export let value;
 
-  $: key = Symbol.keyFor(value);
-  $: isWellKnown = key !== undefined;
-  if (!isWellKnown) {
-    key = String(value).slice(7, -1);
-  }
+  $: isWellKnown = Symbol.keyFor(value) !== undefined;
+  $: key = isWellKnown ? Symbol.keyFor(value) : String(value).slice(7, -1);
   $: prefix = isWellKnown ? 'Symbol.for(' : 'Symbol(';
 
   import Echo from '../Echo.svelte';
