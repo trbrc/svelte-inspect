@@ -1,5 +1,6 @@
 <script context=module>
   export const type = Array;
+  export const hasDepthProp = true;
 </script>
 
 <script>

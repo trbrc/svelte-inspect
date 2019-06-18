@@ -35,6 +35,7 @@
   ];
 
   let component;
+  let spread = {};
 
   $: valueTypeOf = typeof value;
   $: valuePrototype = value ? Object.getPrototypeOf(value) : undefined;
@@ -50,9 +51,12 @@
     }
     if (match) {
       component = formatterModule.default;
+      if (formatterModule.hasDepthProp) {
+        spread = {depth};
+      }
       break;
     }
   }
 </script>
 
-<svelte:component this={component} {value} {depth}><slot /></svelte:component>
+<svelte:component this={component} {value} {...spread}><slot /></svelte:component>

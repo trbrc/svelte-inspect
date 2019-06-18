@@ -1,5 +1,6 @@
 <script context=module>
   export const check = value => value !== null && typeof value === 'object';
+  export const hasDepthProp = true;
 </script>
 
 <script>
