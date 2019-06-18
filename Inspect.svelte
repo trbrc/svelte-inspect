@@ -1,6 +1,7 @@
 <script context=module>
   import {configure as config} from './inspect/config.js';
-  export {config};
+  import InspectConfig from './inspect/InspectConfig.svelte';
+  export {config, InspectConfig};
 </script>
 
 <script>
