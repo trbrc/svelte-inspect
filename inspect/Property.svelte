@@ -1,6 +1,7 @@
 <script>
   import {keyIsIndex} from './utilities.js';
 
+  export let depth = 0;
   export let key;
   export let context;
   export let descriptor = {};
@@ -16,7 +17,7 @@
 
 <svelte:component
   this={getter ? Getter : Formatter}
-  {...(getter ? {descriptor, context} : {value})}
+  {...(getter ? {descriptor, context} : {value, depth: enumerable ? depth : 0})}
 >
   <span class=key class:enumerable class:index={keyIsIndex(key)}>
     {String(key)}<span class=separator>{separator}</span>

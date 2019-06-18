@@ -3,9 +3,10 @@
 </script>
 
 <script>
+  export let depth = 0;
   export let value;
 
-  let isOpen = false;
+  let isOpen = depth > 0;
 
   import Toggle from '../Toggle.svelte';
   import PropertyList from '../PropertyList.svelte';
@@ -26,6 +27,7 @@
 
 {#if isOpen}
   <PropertyList
+    {depth}
     {value}
   >
     Empty array

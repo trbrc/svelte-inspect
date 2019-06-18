@@ -17,6 +17,7 @@
 {#each propKeys as key}
   <span class=inspect style="display: {displayType}">
     <Property
+      depth={depth}
       key={key}
       context={null}
       descriptor={Object.getOwnPropertyDescriptor($$props, key)}

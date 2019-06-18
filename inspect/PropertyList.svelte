@@ -1,9 +1,11 @@
 <script>
   import {onTick, isNil, getAllProperties, getPropertyDescriptor} from './utilities.js';
 
+  export let depth = 0;
   export let value;
 
   $: properties = isNil(value) ? [] : getAllProperties(value);
+  $: nextDepth = Math.max(0, depth - 1);
 
   const paging = 100;
   let maxCount = paging;
@@ -19,6 +21,7 @@
       <pre class=indentation>&nbsp;&nbsp;</pre>
       <span class=item>
         <Property
+          depth={nextDepth}
           key={property}
           context={value}
           descriptor={getPropertyDescriptor(value, property)}

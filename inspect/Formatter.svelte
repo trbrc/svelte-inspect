@@ -1,4 +1,5 @@
 <script>
+  export let depth = 0;
   export let value;
 
   import * as NilFormatter from './formatters/NilFormatter.svelte';
@@ -54,4 +55,4 @@
   }
 </script>
 
-<svelte:component this={component} {value}><slot /></svelte:component>
+<svelte:component this={component} {value} {depth}><slot /></svelte:component>
