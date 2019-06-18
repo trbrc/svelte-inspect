@@ -4,7 +4,11 @@
 </script>
 
 <script>
+  import {configuration} from './inspect/config.js';
   import Property from './inspect/Property.svelte';
+
+  const getConfig = configuration();
+  let {depth, palette} = getConfig();
 
   $: propKeys = Object.keys($$props);
   $: displayType = propKeys.length > 1 ? 'block' : 'inline';
