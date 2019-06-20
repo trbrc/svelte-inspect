@@ -1,12 +1,12 @@
 <script context=module>
-  import {configure as config} from './inspect/config.js';
-  import InspectConfig from './inspect/InspectConfig.svelte';
+  import {configure as config} from './config.js';
+  import InspectConfig from './InspectConfig.svelte';
   export {config, InspectConfig};
 </script>
 
 <script>
-  import {configuration} from './inspect/config.js';
-  import Property from './inspect/Property.svelte';
+  import {configuration} from './config.js';
+  import Property from './Property.svelte';
 
   const getConfig = configuration();
   let {depth, palette} = getConfig();
