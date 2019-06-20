@@ -11,7 +11,8 @@
   export let value;
 
   $: ISOString = Date.prototype.toISOString.call(value);
-  $: [date, time] = ISOString.split(/(T.*)/);
+  $: date = ISOString.slice(0, 10);
+  $: time = ISOString.slice(10);
 
   import PrimitiveBase from '../PrimitiveBase.svelte';
   import Echo from '../Echo.svelte';
