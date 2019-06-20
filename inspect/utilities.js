@@ -9,6 +9,11 @@ export const onTick = callback => tick().then(callback);
 export const getObjectToStringTag = object => Object.prototype.toString.call(object).slice(8, -1);
 
 export const getObjectTypeString = object => {
+  const hasToStringTag = Symbol.toStringTag in object;
+  if (hasToStringTag) {
+    return getObjectToStringTag(object);
+  }
+
   const prototype = Object.getPrototypeOf(object);
   const constructorName = prototype && prototype.constructor && prototype.constructor.name;
   const usefulConstructorName = constructorName && constructorName !== 'Object';
