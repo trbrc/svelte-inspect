@@ -1,15 +1,16 @@
-<script context=module>
-  import {configure as config} from './config.js';
-  import InspectConfig from './InspectConfig.svelte';
-  export {config, InspectConfig};
-</script>
-
 <script>
-  import {configuration} from './config.js';
   import Property from './Property.svelte';
 
-  const getConfig = configuration();
-  let {depth, palette} = getConfig();
+  const getConfiguration = props => {
+    const userConfiguration = props[Symbol.for('configuration')] || {};
+    return {
+      depth: 0,
+      palette: {},
+      ...userConfiguration
+    };
+  };
+
+  let {depth, palette} = getConfiguration($$props);
 
   $: colors = Object.keys(palette);
   $: style = colors.map(color => `--color-${color}: ${palette[color]};`).join('');
