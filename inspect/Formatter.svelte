@@ -10,6 +10,7 @@
   import * as StringFormatter from './formatters/StringFormatter.svelte';
   import * as FunctionFormatter from './formatters/FunctionFormatter.svelte';
   import * as RegExpFormatter from './formatters/RegExpFormatter.svelte';
+  import * as DateFormatter from './formatters/DateFormatter.svelte';
   import * as ErrorFormatter from './formatters/ErrorFormatter.svelte';
   import * as ArrayFormatter from './formatters/ArrayFormatter.svelte';
   import * as TypedArrayFormatter from './formatters/TypedArrayFormatter.svelte';
@@ -26,6 +27,7 @@
     StringFormatter,
     FunctionFormatter,
     RegExpFormatter,
+    DateFormatter,
     ErrorFormatter,
     ArrayFormatter,
     TypedArrayFormatter,
