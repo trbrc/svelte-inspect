@@ -53,9 +53,9 @@
     --color-yellow: gold;
     --color-brown: darkgoldenrod;
     --color-pink: hotpink;
-    --color-gray: gray;
-    --color-black: #222222;
-    --color-white: whitesmoke;
+    --color-gray: #a0a0a0;
+    --color-black: #202020;
+    --color-white: #f0f0f0;
 
     --color-selection: lightskyblue;
   }

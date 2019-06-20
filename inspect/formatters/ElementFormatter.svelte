@@ -50,7 +50,7 @@
     color: var(--color-green);
   }
   .punctuation {
-    color: var(--color-gray);
+    color: var(--color-black);
   }
   .attribute-name {
     color: var(--color-brown);
