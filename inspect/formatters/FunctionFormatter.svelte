@@ -6,6 +6,7 @@
   import {groupByRegexes} from '../utilities.js';
   const grouper = groupByRegexes({
     'function-keyword': /(ƒ|function|\=\>)/,
+    'async-keyword': /(async|await)/,
     'class-keyword': /(class|extends)/,
     identifier: /(\d|\w|_|\$)+/,
   });
@@ -32,6 +33,9 @@
   }
   .function-keyword {
     color: var(--color-black);
+  }
+  .async-keyword {
+    color: var(--color-green);
   }
   .class-keyword {
     color: var(--color-purple);
