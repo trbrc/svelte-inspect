@@ -17,6 +17,10 @@ function configure(configuration) {
 
 SvelteInspect.configure = configure;
 
+for (let i = 0; i <= 10; i++) {
+  SvelteInspect[i] = configure({depth: i});
+}
+
 export default SvelteInspect;
 
 export {configure};
