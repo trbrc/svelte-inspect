@@ -1,7 +1,7 @@
 import SvelteInspect from './inspect/Inspect.svelte';
 
 function configure(configuration) {
-  return class ConfiguratedInspect extends SvelteInspect {
+  return class ConfiguredInspect extends SvelteInspect {
     constructor(options) {
       const props = options.props || {};
       super({
