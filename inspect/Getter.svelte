@@ -7,6 +7,18 @@
   let getterError;
   let hasError = false;
 
+  const callGetter = () => {
+    try {
+      getterValue = descriptor.get.call(context);
+      hasGottenResult = true;
+      focusPrev();
+      onTick(focusNext);
+    } catch (error) {
+      getterError = error;
+      hasError = true;
+    }
+  };
+
   import {onTick} from './utilities.js';
   import {focusPrev, focusNext} from './focus-actions.js';
   import Formatter from './Formatter.svelte';
@@ -21,19 +33,7 @@
 {:else}
   <Toggle
     className=getter-toggle
-    on:open={
-      () => {
-        try {
-          getterValue = descriptor.get.call(context);
-          hasGottenResult = true;
-          focusPrev();
-          onTick(focusNext);
-        } catch (error) {
-          getterError = error;
-          hasError = true;
-        }
-      }
-    }
+    on:open={callGetter}
   >
     <span class=prefix>get</span>
     <slot />
