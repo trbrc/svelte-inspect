@@ -29,7 +29,7 @@ In your `.svelte` file:
 <Inspect {todos} />
 ```
 
-Try the example at [svelte.dev/repl](https://svelte.dev/repl/eb3b3ae5639544d78d7363e126b29896). Use mouse and keyboard to inspect the todos.
+Try the example in the [svelte.dev REPL](https://svelte.dev/repl/eb3b3ae5639544d78d7363e126b29896). Use mouse and keyboard to inspect the todos.
 
 ## Types
 
