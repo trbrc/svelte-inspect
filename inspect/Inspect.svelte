@@ -4,7 +4,7 @@
   const getConfiguration = props => {
     const userConfiguration = props[Symbol.for('configuration')] || {};
     return {
-      depth: 0,
+      depth: 1,
       palette: {},
       ...userConfiguration
     };
