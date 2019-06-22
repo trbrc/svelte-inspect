@@ -15,8 +15,6 @@ function configure(configuration) {
   };
 };
 
-SvelteInspect.configure = configure;
-
 const invertedPalette = {
   red: 'red',
   blue: 'dodgerblue',
@@ -28,9 +26,12 @@ const invertedPalette = {
   selection: 'darkblue'
 };
 
-SvelteInspect.Inverted = configure({
+const Inverted = configure({
   palette: invertedPalette
 });
+
+SvelteInspect.configure = configure;
+SvelteInspect.Inverted = Inverted;
 
 for (let i = 0; i <= 10; i++) {
   SvelteInspect[i] = configure({depth: i});
@@ -39,4 +40,4 @@ for (let i = 0; i <= 10; i++) {
 
 export default SvelteInspect;
 
-export {configure};
+export {configure, Inverted};
