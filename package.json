@@ -2,7 +2,6 @@
   "name": "svelte-inspect",
   "version": "0.1.0-alpha.1",
   "description": "Svelte object inspector",
-  "main": "index.js",
   "svelte": "svelte-inspect.js",
   "keywords": [
     "svelte"
