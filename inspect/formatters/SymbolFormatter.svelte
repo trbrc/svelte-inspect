@@ -24,6 +24,7 @@
 
 <style>
   .key {
+    white-space: pre-wrap;
     color: var(--color-red);
   }
   .affix {

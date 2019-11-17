@@ -29,6 +29,7 @@
     color: var(--color-black);
   }
   .source {
+    white-space: pre-wrap;
     color: var(--color-red);
   }
   .flags {

@@ -56,6 +56,7 @@
     color: var(--color-brown);
   }
   .attribute-value {
+    white-space: pre-wrap;
     color: var(--color-red);
   }
 </style>
