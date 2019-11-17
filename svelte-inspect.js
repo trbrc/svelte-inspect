@@ -1,18 +1,32 @@
 import SvelteInspect from './inspect/Inspect.svelte';
 
 function configure(configuration) {
-  return class ConfiguredInspect extends SvelteInspect {
-    constructor(options) {
-      const props = options.props || {};
-      super({
-        ...options,
-        props: {
+  if (SvelteInspect.render) {
+    // It's an SSR'd component. We need to wrap .render
+    return {
+      ...SvelteInspect,
+      render(props) {
+        return SvelteInspect.render({
           ...props,
           [Symbol.for('configuration')]: configuration
-        }
-      });
-    }
-  };
+        })
+      }
+    };
+  } else {
+    // It's a client side component. We need to extend the class.
+    return class ConfiguredInspect extends SvelteInspect {
+      constructor(options) {
+        const props = options.props || {};
+        super({
+          ...options,
+          props: {
+            ...props,
+            [Symbol.for('configuration')]: configuration
+          }
+        });
+      }
+    };
+  }
 };
 
 const invertedPalette = {
