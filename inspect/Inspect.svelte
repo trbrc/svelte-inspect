@@ -70,7 +70,7 @@
 
     --color-selection: lightskyblue;
   }
-  .semicoloni:after {
+  .semicolon:after {
     content: ' ; ';
     margin-left: -1ex;
     pointer-events: none;
