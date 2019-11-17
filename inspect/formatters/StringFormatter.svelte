@@ -31,6 +31,7 @@
     color: var(--color-black);
   }
   .chars {
+    white-space: pre-wrap;
     color: var(--color-red);
   }
   .chars.escape {
