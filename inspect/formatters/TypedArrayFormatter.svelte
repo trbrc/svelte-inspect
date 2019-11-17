@@ -17,16 +17,18 @@
     }
     return false;
   };
+  export const hasDepthProp = true;
 </script>
 
 <script>
   import {getObjectTypeString} from '../utilities.js';
 
+  export let depth = 0;
   export let value;
 
   $: typeDescription = getObjectTypeString(value);
 
-  let isOpen = false;
+  let isOpen = depth > 0;
 
   import Toggle from '../Toggle.svelte';
   import PropertyList from '../PropertyList.svelte';
