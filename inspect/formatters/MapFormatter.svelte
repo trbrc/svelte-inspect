@@ -30,11 +30,11 @@
 </Toggle>
 
 {#if isOpen}
-  {#each [...value] as [key, value], index (key)}
+  {#each [...value] as [entryKey, entryValue], index (entryKey)}
     <div class=row>
       <pre class=indentation>&nbsp;&nbsp;</pre>
       <span class=item>
-        <MapEntry depth={nextDepth} {key} {value}><span class=entry-index>entry {index}</span>: </MapEntry>
+        <MapEntry depth={nextDepth} key={entryKey} value={entryValue}><span class=entry-index>entry {index}</span>: </MapEntry>
       </span>
     </div>
   {:else}
