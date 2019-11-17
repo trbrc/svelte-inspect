@@ -1,5 +1,6 @@
 <script>
   import Property from './Property.svelte';
+  import Formatter from './Formatter.svelte';
 
   const getConfiguration = props => {
     const userConfiguration = props[Symbol.for('configuration')] || {};
@@ -10,27 +11,37 @@
     };
   };
 
-  let {depth, palette} = getConfiguration($$props);
+  let {depth, palette, valueOnly} = getConfiguration($$props);
 
   $: colors = Object.keys(palette);
   $: style = colors.map(color => `--color-${color}: ${palette[color]};`).join('');
 
   $: propKeys = Object.keys($$props);
   $: block = propKeys.length > 1;
-  $: inline = !block;
+  $: inline = valueOnly || !block;
+  $: semicolon = !valueOnly;
 </script>
 
-{#each propKeys as key}
-  <span class=inspect class:block class:inline {style}>
-    <Property
-      depth={depth}
-      key={key}
-      context={null}
-      descriptor={Object.getOwnPropertyDescriptor($$props, key)}
-      separator=" = "
+{#if valueOnly}
+  <span class=inspect class:inline {style}>
+    <Formatter
+      depth={$$props.depth || depth}
+      value={$$props.value}
     />
   </span>
-{/each}
+{:else}
+  {#each propKeys as key}
+    <span class=inspect class:block class:inline class:semicolon {style}>
+      <Property
+        depth={depth}
+        key={key}
+        context={null}
+        descriptor={Object.getOwnPropertyDescriptor($$props, key)}
+        separator=" = "
+      />
+    </span>
+  {/each}
+{/if}
 
 <style>
   .inspect {
@@ -59,7 +70,7 @@
 
     --color-selection: lightskyblue;
   }
-  .inspect:after {
+  .semicoloni:after {
     content: ' ; ';
     margin-left: -1ex;
     pointer-events: none;

@@ -30,8 +30,13 @@ const Inverted = configure({
   palette: invertedPalette
 });
 
+const Value = configure({
+  valueOnly: true
+});
+
 SvelteInspect.configure = configure;
 SvelteInspect.Inverted = Inverted;
+SvelteInspect.Value = Value;
 
 for (let i = 0; i <= 10; i++) {
   SvelteInspect[i] = configure({depth: i});
@@ -40,4 +45,4 @@ for (let i = 0; i <= 10; i++) {
 
 export default SvelteInspect;
 
-export {configure, Inverted};
+export {configure, Inverted, Value};
