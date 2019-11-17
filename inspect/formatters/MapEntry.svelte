@@ -3,9 +3,7 @@
   export let key;
   export let value;
 
-  $: propertyListValue = Object.create(null);
-  $: propertyListValue.key = key;
-  $: propertyListValue.value = value;
+  $: propertyListValue = Object.assign(Object.create(null), {key, value});
 
   let isOpen = depth > 0;
 
