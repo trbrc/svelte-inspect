@@ -20,11 +20,14 @@
   {...(getter ? {descriptor, context} : {value, depth: enumerable ? depth : 0})}
 >
   <span class=key class:enumerable class:index={keyIsIndex(key)}>
-    {String(key)}<span class=separator>{separator}</span>
+    <span class=pre>{String(key)}</span><span class=separator>{separator}</span>
   </span>
 </svelte:component>
 
 <style>
+  .pre {
+    white-space: pre-wrap;
+  }
   .key {
     color: var(--color-purple);
   }
