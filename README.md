@@ -6,7 +6,7 @@ Live & interactive object inspector for [Svelte](https://svelte.dev), inspired b
 npm install --save svelte-inspect
 ```
 
-In your `.svelte` file:
+Try the example in the [svelte.dev REPL](https://svelte.dev/repl/eb3b3ae5639544d78d7363e126b29896). Use mouse and keyboard to inspect the todos.
 
 ```html
 <script>
@@ -23,17 +23,15 @@ In your `.svelte` file:
   import Inspect from 'svelte-inspect';
 </script>
 
-<Todos bind:todos={todos} />
-
 <!-- …and add an inspector anywhere on your page -->
 <Inspect {todos} />
-```
 
-Try the example in the [svelte.dev REPL](https://svelte.dev/repl/eb3b3ae5639544d78d7363e126b29896). Use mouse and keyboard to inspect the todos.
+<Todos bind:todos={todos} />
+```
 
 ## Types
 
-These types have special formatting:
+See [REPL demo of most of the types](https://svelte.dev/repl/06f3a93da3454c6982aa5a38c541a5b0). These types have special formatting:
 
 - Arrays (including TypedArrays)
 - Objects
@@ -58,6 +56,7 @@ You can use your keyboard to move around in the object hierarchy.
 
 Keys | | Action
 :--- | :--- | :---
+<kbd>A</kbd>…<kbd>Z</kbd> <kbd>0</kbd>…<kbd>9</kbd> | Type anything | Jump using fuzzy matching
 <kbd>⇥</kbd> | Tab | Focus next
 <kbd>⇧</kbd><kbd>⇥</kbd> | Shift + Tab | Focus previous
 <kbd>⯇</kbd> | Left | Close or step out
@@ -67,7 +66,6 @@ Keys | | Action
 <kbd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</kbd> | Space | Toggle
 <kbd>↵</kbd> | Enter | Open & step in
 <kbd>esc</kbd> | Escape | Step out
-<kbd>A</kbd>…<kbd>Z</kbd> <kbd>0</kbd>…<kbd>9</kbd> | Type anything | Jump using fuzzy matching
 
 ## API
 
