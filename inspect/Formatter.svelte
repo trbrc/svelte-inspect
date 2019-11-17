@@ -16,6 +16,7 @@
   import * as TypedArrayFormatter from './formatters/TypedArrayFormatter.svelte';
   import * as ElementFormatter from './formatters/ElementFormatter.svelte';
   import * as MapFormatter from './formatters/MapFormatter.svelte';
+  import * as SetFormatter from './formatters/SetFormatter.svelte';
   import * as ObjectFormatter from './formatters/ObjectFormatter.svelte';
   import * as FallbackFormatter from './formatters/FallbackFormatter.svelte';
 
@@ -34,6 +35,7 @@
     TypedArrayFormatter,
     ElementFormatter,
     MapFormatter,
+    SetFormatter,
     ObjectFormatter,
     FallbackFormatter,
   ];
