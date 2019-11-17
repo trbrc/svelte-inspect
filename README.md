@@ -39,6 +39,7 @@ These types have special formatting:
 - Objects
 - Functions (including async functions)
 - Classes
+- Map and Set
 - RegExps
 - Dates
 - Booleans
@@ -82,6 +83,22 @@ Create one inspector for every value passed in as a prop, with default colors.
 <Inspect value={'foo'} {value2} {...etc} />
 ```
 
+### `Inspect.Value`
+
+Inspect a single `value`, without showing the name of the prop. Also takes an optional `depth` directly as a prop.
+
+```html
+<script>
+  import Inspect from 'svelte-inspect';
+
+  /* Or as a named import:
+  import {Value} from 'svelte-inspect';
+  */
+</script>
+
+<Inspect.Value value={'foo'} depth={2} />
+```
+
 ### `Inspect.Inverted`
 
 Inspector with color palette suitable for dark backgrounds.
@@ -89,6 +106,10 @@ Inspector with color palette suitable for dark backgrounds.
 ```html
 <script>
   import Inspect from 'svelte-inspect';
+
+  /* Or as a named import:
+  import {Inverted} from 'svelte-inspect';
+  */
 </script>
 
 <Inspect.Inverted value={'foo'} {value2} {...etc} />
@@ -115,7 +136,7 @@ Create an inspect component with custom configuration.
   import Inspect from 'svelte-inspect';
   const CustomInspect = Inspect.configure({/* configuration */});
 
-  /* You can also use a named import:
+  /* Or as a named import:
   import {configure} from 'svelte-inspect';
   const CustomInspect = configure({/* configuration */});
   */
