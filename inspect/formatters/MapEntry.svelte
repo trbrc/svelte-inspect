@@ -28,9 +28,6 @@
 {/if}
 
 <style>
-  .map-entry {
-    color: var(--color-purple);
-  }
   .on-intent {
     display: none;
   }
