@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Add formatter for Promise, reacting to changes to state and resolved value
+
 ## 0.1.2
 - Support configuration even in SSR mode.
 - Clean up MapEntry.svelte to avoid unused CSS warning.
