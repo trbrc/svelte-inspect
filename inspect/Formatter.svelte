@@ -17,6 +17,7 @@
   import * as ElementFormatter from './formatters/ElementFormatter.svelte';
   import * as MapFormatter from './formatters/MapFormatter.svelte';
   import * as SetFormatter from './formatters/SetFormatter.svelte';
+  import * as PromiseFormatter from './formatters/PromiseFormatter.svelte';
   import * as ObjectFormatter from './formatters/ObjectFormatter.svelte';
   import * as FallbackFormatter from './formatters/FallbackFormatter.svelte';
 
@@ -36,6 +37,7 @@
     ElementFormatter,
     MapFormatter,
     SetFormatter,
+    PromiseFormatter,
     ObjectFormatter,
     FallbackFormatter,
   ];
