@@ -48,7 +48,7 @@ See [REPL demo of most of the types](https://svelte.dev/repl/06f3a93da3454c6982a
 - Errors
 - HTML elements
 
-There's support for enumerable and non-enumerable properties, symbol keys, `__proto__`, and getters (click to evaluate). It does not yet have any special support for e.g. iterators, promises.
+There's support for enumerable and non-enumerable properties, symbol keys, `__proto__`, and getters (click to evaluate).
 
 ## Keyboard navigation
 
