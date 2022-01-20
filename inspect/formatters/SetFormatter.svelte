@@ -20,9 +20,9 @@
 <Toggle className=set-toggle bind:isOpen>
   <slot />
   <Echo>
-    <span slot=slot class=set>Set(</span>
-    <span slot=slot class=size>{value.size}</span>
-    <span slot=slot class=set>)</span>
+    <span slot=1 class=set>Set(</span>
+    <span slot=2 class=size>{value.size}</span>
+    <span slot=3 class=set>)</span>
   </Echo>
   &lcub;{#if !isOpen}
     <span class=on-intent>…</span>&rcub;

@@ -20,9 +20,9 @@
 <Toggle className=map-toggle bind:isOpen>
   <slot />
   <Echo>
-    <span slot=slot class=map>Map(</span>
-    <span slot=slot class=size>{value.size}</span>
-    <span slot=slot class=map>)</span>
+    <span slot=1 class=map>Map(</span>
+    <span slot=2 class=size>{value.size}</span>
+    <span slot=3 class=map>)</span>
   </Echo>
   &lcub;{#if !isOpen}
     <span class=on-intent>…</span>&rcub;

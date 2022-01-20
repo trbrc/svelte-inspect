@@ -16,10 +16,10 @@
   <slot />
   <span class=regexp>
     <Echo>
-      <span slot=slot class=slash>/</span>
-      <span slot=slot class=source>{source}</span>
-      <span slot=slot class=slash>/</span>
-      <span slot=slot class=flags>{flags}</span>
+      <span slot=1 class=slash>/</span>
+      <span slot=2 class=source>{source}</span>
+      <span slot=3 class=slash>/</span>
+      <span slot=4 class=flags>{flags}</span>
     </Echo>
   </span>
 </PrimitiveBase>
