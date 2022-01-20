@@ -16,9 +16,9 @@
 <PrimitiveBase {value}>
   <slot />
   <Echo>
-    <span slot=slot class=affix>{prefix}</span>
-    <span slot=slot class=key>{key}</span>
-    <span slot=slot class=affix>)</span>
+    <span slot=1 class=affix>{prefix}</span>
+    <span slot=2 class=key>{key}</span>
+    <span slot=3 class=affix>)</span>
   </Echo>
 </PrimitiveBase>
 

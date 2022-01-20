@@ -21,18 +21,18 @@
 <PrimitiveBase {value}>
   <slot />
   <Echo>
-    <span slot=slot>Date(</span>
-    <span slot=slot class=date>
+    <span slot=1>Date(</span>
+    <span slot=2 class=date>
       {#each grouper(date) as {key, match}}
         <span class={key || 'default'}>{match}</span>
       {/each}
     </span>
-    <span slot=slot class=time>
+    <span slot=3 class=time>
       {#each grouper(time) as {key, match}}
         <span class={key || 'default'}>{match}</span>
       {/each}
     </span>
-    <span slot=slot>)</span>
+    <span slot=4>)</span>
   </Echo>
 </PrimitiveBase>
 

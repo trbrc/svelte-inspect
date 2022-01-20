@@ -22,26 +22,26 @@
 <PrimitiveBase {value}>
   <slot />
   <Echo>
-    <span slot=slot class=punctuation>&lt;</span>
-    <span slot=slot class=tag-name>{value.tagName.toLowerCase()}</span>
-    <span slot=slot>
+    <span slot=1 class=punctuation>&lt;</span>
+    <span slot=2 class=tag-name>{value.tagName.toLowerCase()}</span>
+    <span slot=3>
       {#each value.attributes as attribute}
         {' '}
         {#if attribute.value}
           <Echo>
-            <span slot=slot class=attribute-name>{attribute.name}</span>
-            <span slot=slot class=punctuation>="</span>
-            <span slot=slot class=attribute-value>{attribute.value}</span>
-            <span slot=slot class=punctuation>"</span>
+            <span slot=1 class=attribute-name>{attribute.name}</span>
+            <span slot=2 class=punctuation>="</span>
+            <span slot=3 class=attribute-value>{attribute.value}</span>
+            <span slot=4 class=punctuation>"</span>
           </Echo>
         {:else}
           <Echo>
-            <span slot=slot class=attribute-name>{attribute.name}</span>
+            <span slot=1 class=attribute-name>{attribute.name}</span>
           </Echo>
         {/if}
       {/each}
     </span>
-    <span slot=slot class=punctuation>&gt;</span>
+    <span slot=4 class=punctuation>&gt;</span>
   </Echo>
 </PrimitiveBase>
 

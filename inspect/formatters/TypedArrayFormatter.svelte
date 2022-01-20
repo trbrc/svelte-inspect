@@ -38,9 +38,9 @@
 <Toggle className=typed-array-toggle bind:isOpen>
   <slot />
   <Echo>
-    <span slot=slot class=typed-array>{typeDescription}(</span>
-    <span slot=slot class=length>{value.length}</span>
-    <span slot=slot class=typed-array>)</span>
+    <span slot=1 class=typed-array>{typeDescription}(</span>
+    <span slot=2 class=length>{value.length}</span>
+    <span slot=3 class=typed-array>)</span>
   </Echo>
   [{#if !isOpen}
     <span class=on-intent>…</span>]
