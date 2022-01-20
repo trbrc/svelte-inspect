@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3
+- Fix repeated slot names, which are no longer supported by Svelte.
+
 ## 0.1.2
 - Support configuration even in SSR mode.
 - Clean up MapEntry.svelte to avoid unused CSS warning.

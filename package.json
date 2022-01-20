@@ -1,6 +1,6 @@
 {
   "name": "svelte-inspect",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Svelte object inspector",
   "svelte": "svelte-inspect.js",
   "repository": "github:trbrc/svelte-inspect",
